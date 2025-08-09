@@ -10,8 +10,8 @@ module fifo(
   			output wire empty, full
 			);
   
-  reg [4:0] rd_ptr; //address of the cell pertaining to last read
-  reg [4:0] wr_ptr; //address of the cell pertaining to last write
+  reg [4:0] rd_ptr; //address of the cell pertaining to the last read
+  reg [4:0] wr_ptr; //address of the cell pertaining to the last write
   reg [7:0] mem [31:0]; //memory of depth 32, with each cell being a byte
   
   assign full = (wr_ptr - rd_ptr == 31)? 1'b1 : 1'b0; //rd_ptr and wr_ptr start at 0, hence the max difference is 31
