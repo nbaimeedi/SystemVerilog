@@ -10,7 +10,7 @@ module fifo(
   			output wire empty, full
 			);
   
-  reg [4:0] rd__ptr; //address of the cell pertaining to last read
+  reg [4:0] rd_ptr; //address of the cell pertaining to last read
   reg [4:0] wr_ptr; //address of the cell pertaining to last write
   reg [7:0] mem [31:0]; //memory of depth 32, with each cell being a byte
   
