@@ -1,4 +1,4 @@
-//Latest Update Date - 8th Aug, 2025
+//Latest Update Date - 9th Aug, 2025
 //Owner - B Nithin Reddy
 
 //Generator Class
@@ -8,7 +8,7 @@ class generator;
   mailbox #(transaction) gen2drv; //mailbox between generator and driver
   mailbox #(transaction) gen2sco; //mailbox between generator and scoreboard
   event gendone; //event from generator to indicate completion of generation of stimuli
-  event drvnext; //event from driver indicating driver finished driving a particular stimulus to the DUT
+  event sconext; //event from scoreboard indicating scoreboard finished comparing expected and actual data from the DUT
   int count;
   
   //customer constructor function to connect mailboxes and create an object of transaction (for the purpose of deep copy)
@@ -27,7 +27,7 @@ class generator;
       assert(t.randomize()) else $error("[GEN]: Randomization Failure");
       gen2drv.put(t.copy()); //send a copy of transaction to the mailbox b/w generator and driver
       t.display("GEN");
-      @(drvnext); //wait for driver to send stimulus to the DUT
+      @(sconext); //wait for scoreboard to complete the checking
     end
     -> gendone;
     
