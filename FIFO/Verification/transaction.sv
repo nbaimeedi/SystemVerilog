@@ -3,11 +3,11 @@
 
 //Transaction Class
 class transaction;
-  
-  rand logic wr,rd;
-  logic [7:0] wr_data;
-  rand logic [7:0] rd_data;
-  logic full, empty;
+
+  rand bit wr,rd;
+  rand bit [7:0] wr_data;
+  bit [7:0] rd_data;
+  bit full, empty;
   
   //Note - reset and clock are global signals that are generated in the testbench top module
   
