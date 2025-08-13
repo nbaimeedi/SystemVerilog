@@ -21,6 +21,7 @@ module spi_master(
     if (rst == 1'b1) begin
       countc <= 0; //reset countc to 0 on reset
       sclk <= 1'b0; //initialize sclk
+      cs <= 1'b1; //"BUG" --> chip select is not initialized in the previous revision as there is no reset when sclk starts --> Initialize the chip select to 1 here
     end
     else begin
       if (countc < 50) begin //check if countc is less than 50
